@@ -1,0 +1,32 @@
+{
+  "name": "chai-have-xpath",
+  "version": "1.0.0",
+  "description": "expect(element).to.have.xpath('//blink')",
+  "main": "lib/index.js",
+  "scripts": {
+    "pre-publish": "babel src --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/relekang/chai-have-xpath.git"
+  },
+  "files": [
+    "lib/",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "chai",
+    "xpath"
+  ],
+  "author": "Rolf Erik Lekang <me@rolflekang.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/relekang/chai-have-xpath/issues"
+  },
+  "homepage": "https://github.com/relekang/chai-have-xpath#readme",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}
