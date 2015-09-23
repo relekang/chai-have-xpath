@@ -1,0 +1,6 @@
+{
+  "extends": "frigg/react",
+  "globals": {
+    "chai": true
+  }
+}
