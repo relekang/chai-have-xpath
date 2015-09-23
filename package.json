@@ -1,15 +1,15 @@
 {
   "name": "chai-have-xpath",
-  "version": "1.0.0",
   "description": "expect(element).to.have.xpath('//blink')",
   "main": "lib/index.js",
   "scripts": {
     "pre-publish": "babel src --out-dir lib",
-    "test": "mocha test/setup.js test/ --compilers js:babel/register --recursive"
+    "test": "mocha test/setup.js test/ --compilers js:babel/register --recursive",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/relekang/chai-have-xpath.git"
+    "url": "https://github.com/relekang/chai-have-xpath.git"
   },
   "files": [
     "lib/",
@@ -36,6 +36,7 @@
     "eslint-plugin-react": "^3.4.2",
     "jsdom": "^6.5.1",
     "mocha": "^2.3.3",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "semantic-release": "^4.3.5"
   }
 }
