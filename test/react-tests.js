@@ -10,10 +10,19 @@ describe('React components', () => {
     expect(component).to.have.xpath('//blink')
   });
 
-  it('should throw if it does not find valid xpath in react component', () => {
-    const component = TestUtils.renderIntoDocument(<blink>hi</blink>);
-    expect(() => {
-      expect(component).to.have.xpath('//h1')
-    }).to.throw('Expected element to have xpath \'//h1\'');
-  });
+  describe("when it does not find valid xpath in react component", () => {
+    it('should throw', () => {
+      const component = TestUtils.renderIntoDocument(<blink>hi</blink>);
+      expect(() => {
+        expect(component).to.have.xpath('//h1')
+      }).to.throw('to have xpath \'//h1\'');
+    });
+
+    it('should throw with outerHTML of the component', () => {
+      const component = TestUtils.renderIntoDocument(<blink>hi</blink>);
+      expect(() => {
+        expect(component).to.have.xpath('//h1')
+      }).to.throw('<blink data-reactid=".2">hi</blink>');
+    });
+  })
 });

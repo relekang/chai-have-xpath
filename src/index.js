@@ -1,9 +1,11 @@
+/* eslint-env browser */
 export default function haveXpath (Chai) {
   Chai.Assertion.addMethod('xpath', function (xpath) {
+    const dom = this._obj.getDOMNode().outerHTML;
     this.assert(
       haveComponentWithXpath(this._obj, xpath),
-      'Expected element to have xpath \'' + xpath + '\'',
-      'Expected element to not have xpath \'' + xpath + '\''
+      'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
+      'Expected "' + dom + '" to not have xpath \'' + xpath + '\''
     );
   });
 };
