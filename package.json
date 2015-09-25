@@ -11,11 +11,6 @@
     "type": "git",
     "url": "https://github.com/relekang/chai-have-xpath.git"
   },
-  "files": [
-    "lib/index.js",
-    "LICENSE",
-    "README.md"
-  ],
   "keywords": [
     "chai",
     "xpath"
