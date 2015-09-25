@@ -12,7 +12,7 @@
     "url": "https://github.com/relekang/chai-have-xpath.git"
   },
   "files": [
-    "lib/",
+    "lib/index.js",
     "LICENSE",
     "README.md"
   ],
