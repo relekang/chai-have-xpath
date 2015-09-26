@@ -23,6 +23,9 @@
     "url": "https://github.com/relekang/chai-have-xpath/issues"
   },
   "homepage": "https://github.com/relekang/chai-have-xpath#readme",
+  "depenendencies": {
+    "babel": "^5.8.23"
+  },
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.3",
