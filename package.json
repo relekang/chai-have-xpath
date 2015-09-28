@@ -3,9 +3,7 @@
   "description": "expect(element).to.have.xpath('//blink')",
   "main": "lib/index.js",
   "scripts": {
-    "pre-publish": "babel src --out-dir lib",
     "prepublish": "babel src --out-dir lib",
-    "postinstall": "test -d lib || babel src --out-dir lib",
     "test": "mocha test/setup.js test/ --compilers js:babel/register --recursive",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -23,9 +21,6 @@
     "url": "https://github.com/relekang/chai-have-xpath/issues"
   },
   "homepage": "https://github.com/relekang/chai-have-xpath#readme",
-  "depenendencies": {
-    "babel": "^5.8.23"
-  },
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.3",
