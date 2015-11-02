@@ -1,5 +1,6 @@
 {
   "name": "chai-have-xpath",
+  "version": "0.0.0-semantic-release",
   "description": "expect(element).to.have.xpath('//blink')",
   "main": "lib/index.js",
   "scripts": {
@@ -34,5 +35,8 @@
     "mocha": "^2.3.3",
     "react": "^0.14.0",
     "semantic-release": "^4.3.5"
+  },
+  "dependencies": {
+    "react-dom": "^0.14.1"
   }
 }

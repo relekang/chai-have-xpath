@@ -1,7 +1,14 @@
 /* eslint-env browser */
+let findDOMNode;
+
 export default function haveXpath (Chai) {
   Chai.Assertion.addMethod('xpath', function (xpath) {
-    const dom = this._obj.getDOMNode().outerHTML;
+    if (typeof findDOMNode === 'undefined') {
+      findDOMNode = require('react-dom').findDOMNode;
+    }
+
+    const dom = findDOMNode(this._obj).outerHTML;
+
     this.assert(
       haveComponentWithXpath(this._obj, xpath),
       'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
@@ -11,7 +18,10 @@ export default function haveXpath (Chai) {
 };
 
 function haveComponentWithXpath (component, expression) {
-  const domNode = component.getDOMNode ? component.getDOMNode() : component;
+  let domNode;
+
+  domNode = findDOMNode(component);
+
   document.body.appendChild(domNode.parentNode);
   const xpathNode = document.evaluate(
     expression,
