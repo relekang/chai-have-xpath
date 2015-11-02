@@ -12,5 +12,5 @@ before_install:
 before_script:
   - npm prune
 after_success:
-  - npm run pre-publish
+  - npm run prepublish
   - npm run semantic-release
