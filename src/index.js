@@ -31,7 +31,7 @@ function haveComponentWithXpath(component, expression) {
 }
 
 export default function haveXpath(Chai) {
-  Chai.Assertion.addMethod('xpath', xpath => {
+  Chai.Assertion.addMethod('xpath', function evaluateXpath(xpath) {
     if (typeof findDOMNode === 'undefined') {
       findDOMNode = require('react-dom').findDOMNode;
     }
