@@ -5,16 +5,16 @@ import chai from 'chai';
 
 import chaiHaveXpath from '../src/index';
 
-const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
-const win = doc.defaultView;
-
 chai.use(chaiHaveXpath);
 
-global.document = doc;
-global.window = win;
+if (typeof global.document === 'undefined') {
+  global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+  global.window = global.document.defaultView;
+}
+
 global.chai = chai;
 
-_.forOwn(win, (value, key) => {
+_.forOwn(global.window, (value, key) => {
   if (!window.hasOwnProperty(key)) {
     return;
   }

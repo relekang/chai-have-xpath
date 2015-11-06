@@ -22,7 +22,7 @@ describe('React components', () => {
       const component = TestUtils.renderIntoDocument(<blink>hi</blink>);
       expect(() => {
         expect(component).to.have.xpath('//h1');
-      }).to.throw('<blink data-reactid=".2">hi</blink>');
+      }).to.throw('hi</blink>');
     });
   });
 });
