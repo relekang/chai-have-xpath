@@ -21,6 +21,10 @@
   "bugs": {
     "url": "https://github.com/relekang/chai-have-xpath/issues"
   },
+  "eslintConfig": {
+    "extends": "frigg"
+    
+  },
   "homepage": "https://github.com/relekang/chai-have-xpath#readme",
   "devDependencies": {
     "babel": "^5.8.23",
