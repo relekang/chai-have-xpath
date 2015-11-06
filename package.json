@@ -24,7 +24,6 @@
   },
   "eslintConfig": {
     "extends": "frigg"
-    
   },
   "homepage": "https://github.com/relekang/chai-have-xpath#readme",
   "devDependencies": {

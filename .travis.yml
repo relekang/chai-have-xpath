@@ -14,6 +14,3 @@ before_script:
 script:
   - npm test
   - npm run lint
-after_success:
-  - npm run prepublish
-  - npm run semantic-release
