@@ -1,7 +1,7 @@
 /* eslint-env browser */
 let findDOMNode;
 
-export default function haveXpath (Chai) {
+export default function haveXpath(Chai) {
   Chai.Assertion.addMethod('xpath', function (xpath) {
     if (typeof findDOMNode === 'undefined') {
       findDOMNode = require('react-dom').findDOMNode;
@@ -17,7 +17,7 @@ export default function haveXpath (Chai) {
   });
 };
 
-function haveComponentWithXpath (component, expression) {
+function haveComponentWithXpath(component, expression) {
   let domNode;
 
   domNode = findDOMNode(component);
@@ -27,9 +27,21 @@ function haveComponentWithXpath (component, expression) {
     expression,
     domNode.parentNode,
     null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    getFirstOrderedNodeType(),
     null
   ).singleNodeValue;
   document.body.removeChild(domNode.parentNode);
   return xpathNode !== null;
+}
+
+function getFirstOrderedNodeType() {
+  if (XPathResult) {
+    return XPathResult.FIRST_ORDERED_NODE_TYPE;
+  }
+
+  if (window && window.XPathResult) {
+    return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
+  }
+
+  throw new Error('XPathResult is not available');
 }
