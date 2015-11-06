@@ -1,21 +1,17 @@
 /* eslint-env browser */
 let findDOMNode;
 
-export default function haveXpath(Chai) {
-  Chai.Assertion.addMethod('xpath', function (xpath) {
-    if (typeof findDOMNode === 'undefined') {
-      findDOMNode = require('react-dom').findDOMNode;
-    }
+function getFirstOrderedNodeType() {
+  if (XPathResult) {
+    return XPathResult.FIRST_ORDERED_NODE_TYPE;
+  }
 
-    const dom = findDOMNode(this._obj).outerHTML;
+  if (window && window.XPathResult) {
+    return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
+  }
 
-    this.assert(
-      haveComponentWithXpath(this._obj, xpath),
-      'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
-      'Expected "' + dom + '" to not have xpath \'' + xpath + '\''
-    );
-  });
-};
+  throw new Error('XPathResult is not available');
+}
 
 function haveComponentWithXpath(component, expression) {
   let domNode;
@@ -34,14 +30,18 @@ function haveComponentWithXpath(component, expression) {
   return xpathNode !== null;
 }
 
-function getFirstOrderedNodeType() {
-  if (XPathResult) {
-    return XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
+export default function haveXpath(Chai) {
+  Chai.Assertion.addMethod('xpath', function evaluateXpath(xpath) {
+    if (typeof findDOMNode === 'undefined') {
+      findDOMNode = require('react-dom').findDOMNode;
+    }
 
-  if (window && window.XPathResult) {
-    return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
+    const dom = findDOMNode(this._obj).outerHTML;
 
-  throw new Error('XPathResult is not available');
+    this.assert(
+      haveComponentWithXpath(this._obj, xpath),
+      'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
+      'Expected "' + dom + '" to not have xpath \'' + xpath + '\''
+    );
+  });
 }

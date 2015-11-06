@@ -14,13 +14,13 @@ global.document = doc;
 global.window = win;
 global.chai = chai;
 
-_.forOwn(win, function(value, key) {
+_.forOwn(win, (value, key) => {
   if (!window.hasOwnProperty(key)) {
-      return;
+    return;
   }
 
   if (key in global) {
-      return;
+    return;
   }
 
   global[key] = value;

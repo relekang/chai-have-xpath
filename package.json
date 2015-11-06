@@ -6,6 +6,7 @@
   "scripts": {
     "prepublish": "babel src --out-dir lib",
     "test": "mocha test/setup.js test/ --compilers js:babel/register --recursive",
+    "lint": "eslint .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -20,6 +21,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/relekang/chai-have-xpath/issues"
+  },
+  "eslintConfig": {
+    "extends": "frigg"
+    
   },
   "homepage": "https://github.com/relekang/chai-have-xpath#readme",
   "devDependencies": {
