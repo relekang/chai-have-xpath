@@ -2,7 +2,7 @@
 import jsdom from 'jsdom';
 import chai from 'chai';
 
-import chaiHaveXpath from '../lib/index';
+import chaiHaveXpath from '../src/index';
 
 chai.use(chaiHaveXpath);
 
