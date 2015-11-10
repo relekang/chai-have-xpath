@@ -4,9 +4,16 @@
   "description": "expect(element).to.have.xpath('//blink')",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "babel src --out-dir lib",
-    "test": "mocha test/setup.js test/ --compilers js:babel/register --recursive",
+    "prepublish": "npm run babel",
+    "babel": "npm-run-all --parallel babel:*",
+    "babel:src": "babel src --out-dir lib",
+    "babel:test": "babel test --out-dir libtest",
+    "mocha": "mocha libtest/setup.js libtest/ --recursive",
     "lint": "eslint .",
+    "test": "npm-run-all lint prepublish mocha",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:mocha": "mocha libtest/setup.js libtest/ --recursive --watch",
+    "watch:lint": "esw . -w",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -34,10 +41,13 @@
     "eslint-config-airbnb": "1.0.0",
     "eslint-config-frigg": "frigg/eslint-config-frigg",
     "eslint-plugin-react": "^3.4.2",
+    "eslint-watch": "^2.1.3",
     "jsdom": "^7.0.2",
     "lodash": "^3.10.1",
     "mocha": "^2.3.3",
-    "react": "^0.14.0",
+    "npm-run-all": "^1.2.13",
+    "react": "^0.14.2",
+    "react-addons-test-utils": "^0.14.2",
     "semantic-release": "^4.3.5"
   },
   "dependencies": {

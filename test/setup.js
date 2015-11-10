@@ -1,9 +1,8 @@
 /* eslint-env node, browser */
-import _ from 'lodash';
 import jsdom from 'jsdom';
 import chai from 'chai';
 
-import chaiHaveXpath from '../src/index';
+import chaiHaveXpath from '../lib/index';
 
 chai.use(chaiHaveXpath);
 
@@ -13,15 +12,4 @@ if (typeof global.document === 'undefined') {
 }
 
 global.chai = chai;
-
-_.forOwn(global.window, (value, key) => {
-  if (!window.hasOwnProperty(key)) {
-    return;
-  }
-
-  if (key in global) {
-    return;
-  }
-
-  global[key] = value;
-});
+global.navigator = window.navigator;

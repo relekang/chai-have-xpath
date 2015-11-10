@@ -1,7 +1,6 @@
 /* eslint-env mocha */
-import React from 'react/addons';
-
-const {TestUtils} = React.addons;
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 const {expect} = chai;
 
 describe('React components', () => {

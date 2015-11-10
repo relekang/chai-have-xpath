@@ -2,14 +2,12 @@
 let findDOMNode;
 
 function getFirstOrderedNodeType() {
-  if (XPathResult) {
+  if (global && global.XPathResult) {
     return XPathResult.FIRST_ORDERED_NODE_TYPE;
   }
-
   if (window && window.XPathResult) {
     return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
   }
-
   throw new Error('XPathResult is not available');
 }
 
