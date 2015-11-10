@@ -1,5 +1,5 @@
 /* eslint-env browser */
-let findDOMNode;
+const findDOMNode = findDOMNode || (global && global.findDOMNode) || require('react-dom').findDOMNode;
 
 function getFirstOrderedNodeType() {
   if (XPathResult) {
@@ -14,11 +14,8 @@ function getFirstOrderedNodeType() {
 }
 
 function haveComponentWithXpath(component, expression) {
-  let domNode;
-
-  domNode = findDOMNode(component);
-
-  document.body.appendChild(domNode.parentNode);
+  const domNode = findDOMNode(component);
+  document.body.appendChild(domNode);
   const xpathNode = document.evaluate(
     expression,
     domNode.parentNode,
@@ -26,18 +23,13 @@ function haveComponentWithXpath(component, expression) {
     getFirstOrderedNodeType(),
     null
   ).singleNodeValue;
-  document.body.removeChild(domNode.parentNode);
+  document.body.removeChild(domNode);
   return xpathNode !== null;
 }
 
 export default function haveXpath(Chai) {
   Chai.Assertion.addMethod('xpath', function evaluateXpath(xpath) {
-    if (typeof findDOMNode === 'undefined') {
-      findDOMNode = require('react-dom').findDOMNode;
-    }
-
     const dom = findDOMNode(this._obj).outerHTML;
-
     this.assert(
       haveComponentWithXpath(this._obj, xpath),
       'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
