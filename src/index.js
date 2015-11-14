@@ -1,29 +1,15 @@
 /* eslint-env browser */
-const findDOMNode = findDOMNode || (global && global.findDOMNode) || require('react-dom').findDOMNode;
+import {findSingleNode} from "./helpers";
 
-function getFirstOrderedNodeType() {
-  if (XPathResult) {
-    return XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
-
-  if (window && window.XPathResult) {
-    return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
-
-  throw new Error('XPathResult is not available');
-}
+let findDOMNode = findDOMNode || (global && global.findDOMNode) || require('react-dom').findDOMNode;
 
 function haveComponentWithXpath(component, expression) {
   const domNode = findDOMNode(component);
+
   document.body.appendChild(domNode);
-  const xpathNode = document.evaluate(
-    expression,
-    domNode.parentNode,
-    null,
-    getFirstOrderedNodeType(),
-    null
-  ).singleNodeValue;
+  const xpathNode = findSingleNode(expression, domNode.parentNode)
   document.body.removeChild(domNode);
+
   return xpathNode !== null;
 }
 
