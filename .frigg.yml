@@ -1,5 +1,5 @@
 setup_tasks:
- - npm install
+ - npm run ci
 
 tasks:
  - npm test
