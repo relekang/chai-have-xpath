@@ -2,5 +2,6 @@ setup_tasks:
  - npm install
 
 tasks:
- - npm test
+ - npm install react@0.13 && npm test
+ - npm install react@latest react-dom@latest && npm test
  - npm run lint
