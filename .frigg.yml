@@ -1,5 +1,6 @@
 setup_tasks:
- - npm run ci
+ - npm run lint
+ - npm test
 
 tasks:
  - npm test
