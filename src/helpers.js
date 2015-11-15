@@ -1,3 +1,26 @@
+function getReactDomFindDOMNode() {
+  try {
+    return require('react-dom').findDOMNode;
+  } catch (error) {
+    if (error.code !== 'MODULE_NOT_FOUND') {
+      throw error;
+    }
+  }
+}
+
+function getReactFindDOMNode() {
+  try {
+    return require('react').findDOMNode;
+  } catch (error) {
+    if (error.code !== 'MODULE_NOT_FOUND') {
+      throw error;
+    }
+  }
+}
+
+export function getFindDOMNode() {
+  return getReactDomFindDOMNode() || getReactFindDOMNode();
+}
 
 export function getFirstOrderedNodeType() {
   if (XPathResult) {
@@ -12,7 +35,7 @@ export function getFirstOrderedNodeType() {
 }
 
 export function findSingleNode(expression, parentNode) {
-   return document.evaluate(
+  return document.evaluate(
     expression,
     parentNode,
     null,
