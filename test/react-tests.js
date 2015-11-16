@@ -1,8 +1,7 @@
 /* eslint-env mocha */
-import React from 'react/addons';
-
-const {TestUtils} = React.addons;
 const {expect} = chai;
+import React from './React';
+import TestUtils from './TestUtils';
 
 describe('React components', () => {
   it('should find valid xpath in react component', () => {

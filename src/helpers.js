@@ -23,14 +23,10 @@ export function getFindDOMNode() {
 }
 
 export function getFirstOrderedNodeType() {
-  if (XPathResult) {
-    return XPathResult.FIRST_ORDERED_NODE_TYPE;
+  const xpathResult = global && global.XPathResult || window && window.XPathResult;
+  if (xpathResult) {
+    return xpathResult.FIRST_ORDERED_NODE_TYPE;
   }
-
-  if (window && window.XPathResult) {
-    return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
-
   throw new Error('XPathResult is not available');
 }
 
