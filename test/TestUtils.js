@@ -2,8 +2,7 @@ function getTestUtils() {
   try {
     // Require the TestUtils Package (0.14.x)
     return require('react-addons-test-utils');
-  }
-  catch (error) {
+  } catch (error) {
     if (error.code !== 'MODULE_NOT_FOUND') {
       throw error;
     }
