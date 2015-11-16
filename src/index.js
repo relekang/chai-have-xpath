@@ -1,45 +1,26 @@
 /* eslint-env browser */
-let findDOMNode;
+import {findSingleNode, getFindDOMNode} from './helpers';
 
-function getFirstOrderedNodeType() {
-  if (global && global.XPathResult) {
-    return XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
-  if (window && window.XPathResult) {
-    return window.XPathResult.FIRST_ORDERED_NODE_TYPE;
-  }
-  throw new Error('XPathResult is not available');
-}
+let findDOMNode = findDOMNode || (global && global.findDOMNode);
 
-function haveComponentWithXpath(component, expression) {
-  let domNode;
+function haveDomNodeWithXpath(domNode, expression) {
+  document.body.appendChild(domNode);
+  const xpathNode = findSingleNode(expression, domNode.parentNode);
+  document.body.removeChild(domNode);
 
-  domNode = findDOMNode(component);
-
-  document.body.appendChild(domNode.parentNode);
-  const xpathNode = document.evaluate(
-    expression,
-    domNode.parentNode,
-    null,
-    getFirstOrderedNodeType(),
-    null
-  ).singleNodeValue;
-  document.body.removeChild(domNode.parentNode);
   return xpathNode !== null;
 }
 
 export default function haveXpath(Chai) {
   Chai.Assertion.addMethod('xpath', function evaluateXpath(xpath) {
-    if (typeof findDOMNode === 'undefined') {
-      findDOMNode = require('react-dom').findDOMNode;
-    }
+    findDOMNode = findDOMNode || getFindDOMNode();
 
-    const dom = findDOMNode(this._obj).outerHTML;
+    const domNode = findDOMNode(this._obj);
 
     this.assert(
-      haveComponentWithXpath(this._obj, xpath),
-      'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
-      'Expected "' + dom + '" to not have xpath \'' + xpath + '\''
+      haveDomNodeWithXpath(domNode, xpath),
+      'Expected "' + domNode.outerHTML + '" to have xpath \'' + xpath + '\'',
+      'Expected "' + domNode.outerHTML + '" to not have xpath \'' + xpath + '\''
     );
   });
 }
