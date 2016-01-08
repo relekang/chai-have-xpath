@@ -9,6 +9,12 @@ describe('React components', () => {
     expect(component).to.have.xpath('//blink');
   });
 
+  it('should find valid xpath in react component twice', () => {
+    const component = TestUtils.renderIntoDocument(<blink>hi</blink>);
+    expect(component).to.have.xpath('//blink');
+    expect(component).to.have.xpath('//blink');
+  });
+
   describe('when it does not find valid xpath in react component', () => {
     it('should throw', () => {
       const component = TestUtils.renderIntoDocument(<blink>hi</blink>);
