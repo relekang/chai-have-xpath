@@ -49,5 +49,7 @@
     "react-addons-test-utils": "^0.14.2",
     "semantic-release": "^4.3.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "have-xpath": "1.0.0"
+  }
 }
