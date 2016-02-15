@@ -1,4 +1,5 @@
 /* eslint-env node, browser */
+/* eslint-disable no-console */
 import jsdom from 'jsdom';
 import chai from 'chai';
 
@@ -13,3 +14,5 @@ if (typeof global.document === 'undefined') {
 
 global.chai = chai;
 global.navigator = window.navigator;
+
+console.log(`Running tests with React ${require('react').version}`);
