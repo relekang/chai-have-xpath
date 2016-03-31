@@ -1,5 +1,5 @@
 {
-  "extends": "frigg/react",
+  "extends": "airbnb",
   "globals": {
     "chai": true
   }
