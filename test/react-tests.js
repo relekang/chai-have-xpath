@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const {expect} = chai;
+const { expect } = chai;
 import React from './React';
 import TestUtils from './TestUtils';
 

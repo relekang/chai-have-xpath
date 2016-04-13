@@ -1,5 +1,5 @@
 /* eslint-env mocha, browser */
-const {expect} = chai;
+const { expect } = chai;
 
 describe('DOM nodes', () => {
   it('should find valid xpath in element', () => {
@@ -11,6 +11,6 @@ describe('DOM nodes', () => {
     const element = document.createElement('div');
     expect(() => {
       expect(element).to.have.xpath('//h1');
-    }).to.throw('Expected \"<div></div>\" to have xpath \'//h1\'');
+    }).to.throw('Expected "<div></div>" to have xpath \'//h1\'');
   });
 });

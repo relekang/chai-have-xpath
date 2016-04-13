@@ -1,11 +1,9 @@
 /* eslint-env browser */
 import { haveXpath, getFindDOMNode } from 'have-xpath';
 
-let findDOMNode = findDOMNode || (global && global.findDOMNode);
-
 export default function chaiHaveXpath(Chai) {
   Chai.Assertion.addMethod('xpath', function evaluateXpath(xpath) {
-    findDOMNode = findDOMNode || getFindDOMNode();
+    const findDOMNode = getFindDOMNode();
 
     const domNode = findDOMNode(this._obj);
 
