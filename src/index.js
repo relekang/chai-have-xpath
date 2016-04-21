@@ -1,17 +1,22 @@
-/* eslint-env browser */
+/* eslint-env node, browser */
+let React;
 export default function haveXpath (Chai) {
   Chai.Assertion.addMethod('xpath', function (xpath) {
-    const dom = this._obj.getDOMNode().outerHTML;
+    if (!React) {
+      React = require('react');
+    }
+
+    const domNode = React.findDOMNode(this._obj);
+
     this.assert(
-      haveComponentWithXpath(this._obj, xpath),
-      'Expected "' + dom + '" to have xpath \'' + xpath + '\'',
-      'Expected "' + dom + '" to not have xpath \'' + xpath + '\''
+      haveComponentWithXpath(this._obj, xpath, domNode),
+      'Expected "' + domNode.outerHTML + '" to have xpath \'' + xpath + '\'',
+      'Expected "' + domNode.outerHTML + '" to not have xpath \'' + xpath + '\''
     );
   });
 };
 
-function haveComponentWithXpath (component, expression) {
-  const domNode = component.getDOMNode ? component.getDOMNode() : component;
+function haveComponentWithXpath (component, expression, domNode) {
   document.body.appendChild(domNode.parentNode);
   const xpathNode = document.evaluate(
     expression,
