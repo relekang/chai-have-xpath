@@ -37,6 +37,7 @@
     "jsdom": "8.4.1",
     "lodash": "4.11.0",
     "mocha": "2.4.5",
+    "pretty": "1.0.0",
     "react": "15.0.1",
     "react-addons-test-utils": "15.0.1",
     "semantic-release": "4.3.5"
