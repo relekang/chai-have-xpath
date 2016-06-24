@@ -1,6 +1,6 @@
 {
   "name": "chai-have-xpath",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "expect(element).to.have.xpath('//blink')",
   "main": "lib/index.js",
   "scripts": {
