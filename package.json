@@ -43,6 +43,6 @@
     "semantic-release": "4.3.5"
   },
   "dependencies": {
-    "have-xpath": "1.0.3"
+    "have-xpath": "1.0.4"
   }
 }
