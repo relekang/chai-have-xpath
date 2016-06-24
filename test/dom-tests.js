@@ -11,6 +11,6 @@ describe('DOM nodes', () => {
     const element = document.createElement('div');
     expect(() => {
       expect(element).to.have.xpath('//h1');
-    }).to.throw('Expected "<div></div>" to have xpath \'//h1\'');
+    }).to.throw('to have xpath \'//h1\'');
   });
 });
